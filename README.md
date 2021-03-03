@@ -1,5 +1,8 @@
 # credit-services
 
+docker-compose -f docker-compose.yml build
+docker-compose up
+
 
 Post http://localhost:9494/credits
 {
