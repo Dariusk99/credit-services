@@ -8,6 +8,9 @@ public class Credit {
     private int ID;
     private String creditName;
 
+    public Credit() {
+    }
+
     public Credit(int ID, String creditName) {
         this.ID = ID;
         this.creditName = creditName;

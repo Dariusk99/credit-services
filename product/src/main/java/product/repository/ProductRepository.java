@@ -4,5 +4,5 @@ import product.model.Product;
 
 public interface ProductRepository {
 
-    void saveProduct(Product product);
+    int save(Product product);
 }

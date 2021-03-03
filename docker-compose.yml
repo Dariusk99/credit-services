@@ -1,0 +1,56 @@
+version: "3"
+
+services:
+  database:
+    container_name: "database"
+    image: mysql
+    restart: always
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      interval: 8s
+      timeout: 8s
+      retries: 10
+    environment:
+      MYSQL_ROOT_PASSWORD: darek
+    networks:
+      - network
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./database:/docker-entrypoint-initdb.d/:ro
+
+  credit:
+    depends_on:
+      database:
+        condition: service_healthy
+    build: ./credit
+    networks:
+      - network
+    ports:
+      - "9494:9494"
+
+  product:
+    depends_on:
+      database:
+        condition: service_healthy
+    build: ./product
+    networks:
+      - network
+    ports:
+      - "9595:9595"
+
+  customer:
+    depends_on:
+      database:
+        condition: service_healthy
+    build: ./customer
+    networks:
+      - network
+    ports:
+      - "9696:9696"
+
+networks:
+  network:
+    driver: bridge
+
+volumes:
+  mysql-data:

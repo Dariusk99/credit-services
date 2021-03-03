@@ -4,10 +4,13 @@ public class Customer {
 
     private int creditID;
     private String firstName;
-    private String pesel;
+    private int pesel;
     private String surname;
 
-    public Customer(int creditID, String firstName, String pesel, String surname) {
+    public Customer() {
+    }
+
+    public Customer(int creditID, String firstName, int pesel, String surname) {
         this.creditID = creditID;
         this.firstName = firstName;
         this.pesel = pesel;
@@ -30,11 +33,11 @@ public class Customer {
         this.firstName = firstName;
     }
 
-    public String getPesel() {
+    public int getPesel() {
         return pesel;
     }
 
-    public void setPesel(String pesel) {
+    public void setPesel(int pesel) {
         this.pesel = pesel;
     }
 

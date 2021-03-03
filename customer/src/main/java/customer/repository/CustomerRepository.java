@@ -4,5 +4,5 @@ import customer.model.Customer;
 
 public interface CustomerRepository {
 
-    void saveCustomer(Customer customer);
+    int save(Customer customer);
 }
